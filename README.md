@@ -7,6 +7,7 @@ Flutter Widget that allow load images from an URL and define the Widgets that wi
 Add the dependency on pubspec.yaml
 ```yaml
 dependencies:
+  #...
   flutter_url_image_load_fail: ^0.0.1
 ```
 
@@ -23,6 +24,7 @@ LoadImageFromUrl(
     () => Text('Loading...'), //What widget returns when the image is loading
     (IRetryLoadImage retryLoadImage, code , message){ //What widget returns when the image failed to load
         return RaisedButton(
+            child: Text('Try Again'),
             onPressed: (){
                 retryLoadImage.retryLoadImage(); //Call this method to retry load the image when it failed to load
             },
