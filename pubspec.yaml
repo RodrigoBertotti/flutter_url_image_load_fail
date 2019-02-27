@@ -1,0 +1,18 @@
+name: flutter_url_image_load_fail
+description: Widget to Flutter that allow load images from an URL and define the Widgets that will be shown on states of loading, loaded with success and failed to load
+version: 0.0.1
+author: Rodrigo João Bertotti <digao520d@gmail.com>
+homepage: https://www.linkedin.com/in/rodrigo-jo%C3%A3o-bertotti-37418bb9/
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
