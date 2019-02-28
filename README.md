@@ -7,8 +7,7 @@ Flutter Widget that allow load images from an URL and define the Widgets that wi
 Add the dependency on pubspec.yaml
 ```yaml
 dependencies:
-  #...
-  flutter_url_image_load_fail: ^0.0.1
+  flutter_url_image_load_fail: ^0.0.2
 ```
 
 Import the Widget
@@ -16,7 +15,7 @@ Import the Widget
 import 'package:flutter_url_image_load_fail/flutter_url_image_load_fail.dart';
 ```
 
-Create the LoadImageFromUrl Widget and use it
+Instantiate the LoadImageFromUrl Widget and use it
 ```dart
 LoadImageFromUrl(
     'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png', //Image URL to load
@@ -30,5 +29,6 @@ LoadImageFromUrl(
             },
         );
     },
+    requestTimeout: Duration(seconds: 5) //Optionally set the timeout
 )
 ```

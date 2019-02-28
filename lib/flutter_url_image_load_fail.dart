@@ -21,13 +21,19 @@ class LoadImageFromUrl extends StatefulWidget {
   ImageState imageState;
   int responseStatusCode = -1;
   String responseMessage = '';
+  Duration requestTimeout;
 
   LoadImageFromUrl(
     this.imageUrl,
     this.buildSucessWidget,
     this.buildLoadingWidget,
-    this.buildFailedWidget
-  );
+    this.buildFailedWidget,
+    {
+      requestTimeout
+    }
+  ){
+    this.requestTimeout = requestTimeout != null ? requestTimeout : Duration(seconds: 5);
+  }
 
   @override
   State<StatefulWidget> createState() {
@@ -51,11 +57,18 @@ class LoadImageFromUrlState extends State<LoadImageFromUrl> implements IRetryLoa
         //headers
         return request.close();
       })
+      .timeout(widget.requestTimeout)
       .then((response){
         widget.responseMessage = response.reasonPhrase;
         widget.responseStatusCode = response.statusCode;
 
-        response.toList().then((onValue){ 
+        response.toList().timeout(widget.requestTimeout, onTimeout: (){
+          setState(() {
+            widget.imageState = ImageState.ERROR; 
+            widget.responseMessage = 'Request Timeout';
+            widget.responseStatusCode = 408;
+          });
+        }).then((onValue){ 
           setState(() {
             List<int> v = [];
             for(List<int> aux in onValue){
