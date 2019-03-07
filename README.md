@@ -7,7 +7,7 @@ Flutter Widget that allow load images from an URL and define the Widgets that wi
 Add the dependency on pubspec.yaml
 ```yaml
 dependencies:
-  flutter_url_image_load_fail: ^0.0.2
+  flutter_url_image_load_fail: ^0.0.3
 ```
 
 Import the Widget
