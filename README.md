@@ -1,6 +1,6 @@
 # flutter_url_image_load_fail
 
-Flutter Widget that allow load images from an URL and define the Widgets that will be shown on states of loading, loaded with success and failed to load
+Flutter Widget that allows load images from an URL and define the Widgets that will be shown on loading, loaded with success and failed to load states
 
 ## Getting Started
 
