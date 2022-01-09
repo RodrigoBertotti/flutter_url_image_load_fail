@@ -4,10 +4,12 @@ Flutter Widget that allows load images from an URL and define the Widgets that w
 
 ## Getting Started
 
+![Alt Text](example/example.gif)
+
 Add the dependency on pubspec.yaml
 ```yaml
 dependencies:
-  flutter_url_image_load_fail: ^0.0.3
+  flutter_url_image_load_fail: ^1.0.0
 ```
 
 Import the Widget
@@ -17,18 +19,28 @@ import 'package:flutter_url_image_load_fail/flutter_url_image_load_fail.dart';
 
 Instantiate the LoadImageFromUrl Widget and use it
 ```dart
-LoadImageFromUrl(
-    'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png', //Image URL to load
-    (image) => image, //What widget returns when the image is loaded successfully
-    () => Text('Loading...'), //What widget returns when the image is loading
-    (IRetryLoadImage retryLoadImage, code , message){ //What widget returns when the image failed to load
-        return RaisedButton(
-            child: Text('Try Again'),
-            onPressed: (){
-                retryLoadImage.retryLoadImage(); //Call this method to retry load the image when it failed to load
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('flutter_url_image_load_fail example'),
+      ),
+      body: Center(
+        child: LoadImageFromUrl(
+          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png', //Image URL to load
+          buildSuccessWidget:  (image) => image,
+          buildLoadingWidget:  () => Text('Loading...'),
+          buildFailedWidget: (retryLoadImage, code, message){
+              return ElevatedButton(
+                child: Text('Try Again'),
+                onPressed: (){
+                  retryLoadImage();
+                },
+              );
             },
-        );
-    },
-    requestTimeout: Duration(seconds: 5) //Optionally set the timeout
-)
+            requestTimeout: Duration(seconds: 5) //Optionally set the timeout
+        ),
+      ),
+    );
+  }
 ```

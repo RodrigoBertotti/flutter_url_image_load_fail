@@ -1,3 +1,12 @@
+## 1.0.0
+
+* Migration to null-safety
+* Interface updated
+* README updated
+* `/example` project added
+* SocketException error: `code` now is 400
+* Development: hot reload improvement
+
 ## 0.0.3
 
 * Fixed problem with Hot Reload
